@@ -1,0 +1,11 @@
+<users>
+    <user id="1" role="admin">
+        <username>user</username>
+        <password>password</password>
+    </user>
+    <user id="2" role="visitor">
+        <username>visitor</username>
+        <password>password</password>
+    </user>
+</users>
+

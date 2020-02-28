@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <form method="post" action="/newattribute">
+        <div class="form-group">
+            <label for="entity">Attribute: </label>
+            <input class="form-control" name="attribute" id="attribute" required>
+            <label for="attribute">Cardinality: </label>
+            <input class="form-control" name="cardinality" id="cardinality" required>
+            <input type="submit" value="Add To Schema">
+        </div>
+    </form>
+{% endblock %}

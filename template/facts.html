@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div>
+        <form method="post" action="/newfact">
+            <div class="form-row">
+                <div class="col-2">
+                    <input class="form-control" placeholder="Entity" name="entity" id="entity" required>
+                </div>
+                <div class="col-2">
+                    <input class="form-control" placeholder="Attribute" name="attribute" id="attribute" required>
+                </div>
+                <div class="col-2">
+                    <input class="form-control" placeholder="Value" name="value" id="value" required>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary mb-2">Add Fact</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Entity</th>
+                <th>Attribute</th>
+                <th>Value</th>
+                <th>Action</th>
+            </tr>
+            {% for fact in facts %}
+                <tr>
+                    <td>
+                        <a href="{{ url_for('detail_entity', entity=fact.entity) }}">
+                            {{ fact.entity.replace('%2F', '/') }}
+                        </a>
+                    </td>
+                    <td>{{ fact.attribute }}</td>
+                    <td>{{ fact.value }}</td>
+                    <td>
+                        <a class="btn btn-primary" role="button" href="{{ url_for('delete_fact', entity=fact.entity, attribute=fact.attribute, value=fact.value) }}">
+                        Delete</a>
+<!--                        <a class="btn btn-primary" role="button" href="{{ url_for('detail_entity', entity=fact.entity) }}">Detail</a>-->
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

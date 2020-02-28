@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post" action="/newfact">
+        <div class="from-group">
+            <label for="entity">Entity: </label>
+            <input class="form-control" name="entity" id="entity" required>
+            <label for="attribute">Attribute: </label>
+            <input class="form-control" name="attribute" id="attribute" required>
+            <label for="value">Value: </label>
+            <input class="form-control" name="value" id="value" required>
+            <input type="submit" value="Add Fact">
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    {% if history %}
+        <p>Entity's modification history</p>
+        <table class="table">
+            <tr>
+                <th>Timestamp</th>
+                <th>Action</th>
+                <th>Attribute</th>
+                <th>Value</th>
+            </tr>
+            {% for modification in history %}
+            <tr>
+                <td>{{ modification.datetime }}</td>
+                <td>{{ modification.action }}</td>
+                <td>{{ modification.attribute }}</td>
+                <td>{{ modification.value }}</td>
+             </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No actions in entity's modification history.</p>
+    {% endif %}
+{% endblock %}

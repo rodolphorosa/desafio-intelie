@@ -1,0 +1,17 @@
+{% extends 'facts.html' %}
+
+{% block content %}
+    <form method="post" action="/update_attribute">
+        <div class="form-group">
+            <label for="attribute">Attribute: </label>
+            <input class="form-control" value="{{ attribute.name }}" name="attribute" id="attribute" required>
+        </div>
+        <div class="form-group"">
+            <label for="cardinality">Cardinality: </label>
+            <input class="form-control" value="{{ attribute.cardinality }}" name="cardinality" id="cardinality" required>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary mb-2">Update</button>
+        </div>
+    </form>
+{% endblock %}

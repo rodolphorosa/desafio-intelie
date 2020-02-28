@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <form method="post" action="/newattribute">
+        <div class="form-row">
+            <div class="col-2">
+                <input class="form-control" placeholder="Attribute" name="attribute" id="attribute" required>
+            </div>
+            <div class="col-2">
+                <input class="form-control" placeholder="Cardinality" name="cardinality" id="cardinality" required>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-primary mb-2">Add To Schema</button>
+            </div>
+        </div>
+    </form>
+    <table class="table">
+        <tr>
+            <th>Attribute</th>
+            <th>Cardinality</th>
+            <th>Action</th>
+        </tr>
+        {% for attribute in schema %}
+        <tr>
+            <td>{{ attribute.name }}</td>
+            <td>{{ attribute.cardinality }}</td>
+            <td>
+                <a class="btn btn-primary" role="button" href="{{ url_for('update_schema_form', attribute_name = attribute.name) }}">Edit</a>
+                <a class="btn btn-primary" role="button" href="{{ url_for('delete_attribute', attribute = attribute.name) }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

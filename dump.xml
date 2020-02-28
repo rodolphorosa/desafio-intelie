@@ -1,0 +1,70 @@
+<data>
+  <schema>
+    <attribute name="name">
+      <cardinality>one</cardinality>
+    </attribute>
+    <attribute name="address">
+      <cardinality>one</cardinality>
+    </attribute>
+    <attribute name="phone">
+      <cardinality>many</cardinality>
+    </attribute>
+  </schema>
+  <facts>
+    <fact current="yes">
+      <entity>entity/1</entity>
+      <attribute>name</attribute>
+      <value>gabriel</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/1</entity>
+      <attribute>address</attribute>
+      <value>av rio branco, 109</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/2</entity>
+      <attribute>address</attribute>
+      <value>rua alice, 10</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/2</entity>
+      <attribute>name</attribute>
+      <value>joão</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/2</entity>
+      <attribute>address</attribute>
+      <value>rua bob, 88</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/2</entity>
+      <attribute>phone</attribute>
+      <value>234-5678</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/2</entity>
+      <attribute>phone</attribute>
+      <value>91234-5555</value>
+    </fact>
+    <fact current="no">
+      <entity>entity/2</entity>
+      <attribute>phone</attribute>
+      <value>234-5678</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/1</entity>
+      <attribute>phone</attribute>
+      <value>98888-1111</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/1</entity>
+      <attribute>phone</attribute>
+      <value>56789-1010</value>
+    </fact>
+    <fact current="no">
+      <entity>entity/2</entity>
+      <attribute>address</attribute>
+      <value>rua bob, 88</value>
+    </fact>
+  </facts>
+</data>

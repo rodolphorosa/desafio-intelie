@@ -1,0 +1,32 @@
+<modifications>
+  <modification action="deletion">
+    <entity>entity/1</entity>
+    <attribute>phone</attribute>
+    <value>56789-1010</value>
+    <date_time>20/02/27 17:48:03</date_time>
+  </modification>
+  <modification action="insertion">
+    <entity>entity/2</entity>
+    <attribute>address</attribute>
+    <value>rua aritiba</value>
+    <date_time>20/02/27 18:49:44</date_time>
+  </modification>
+  <modification action="deletion">
+    <entity>entity/2</entity>
+    <attribute>name</attribute>
+    <value>joão</value>
+    <date_time>20/02/27 19:04:47</date_time>
+  </modification>
+  <modification action="deletion">
+    <entity>entity/1</entity>
+    <attribute>phone</attribute>
+    <value>56789-1010</value>
+    <date_time>20/02/27 20:37:47</date_time>
+  </modification>
+  <modification action="insertion">
+    <entity>entity/1</entity>
+    <attribute>sex</attribute>
+    <value>male</value>
+    <date_time>20/02/27 22:54:00</date_time>
+  </modification>
+</modifications>
