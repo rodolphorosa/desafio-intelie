@@ -49,7 +49,7 @@ def home():
 @app.route("/facts")
 def get_facts():
     current_facts = []
-    for fact in sf.retrieve_current_facts():
+    for fact in sf.get_current_facts():
         current_facts.append({
             "entity": fact[0].replace('/', '%2F'),
             "attribute": fact[1],
@@ -69,12 +69,7 @@ def get_schema():
     return render_template("schema.html", schema=attributes)
 
 
-@app.route("/addfact")
-def add_fact_form():
-    return render_template("addfact.html")
-
-
-@app.route("/newfact", methods=["POST"])
+@app.route("/add_fact", methods=["POST"])
 def add_fact():
     if request.method == "POST":
         if session['user']['role'] == 'admin':
@@ -83,6 +78,7 @@ def add_fact():
             value = request.form["value"]
             try:
                 sf.insert_fact(entity, attribute, value)
+                data_handler.save_data(sf.get_schema(), sf.get_facts())
                 insertion = {
                     "action": "insertion",
                     "entity": entity,
@@ -99,12 +95,7 @@ def add_fact():
         return redirect('/facts')
 
 
-@app.route("/addschema")
-def add_schema_form():
-    return render_template("addschema.html")
-
-
-@app.route("/newattribute", methods=["POST"])
+@app.route("/add_attribute", methods=["POST"])
 def add_schema():
     if request.method == "POST":
         if session['user']['role'] == 'admin':
@@ -112,6 +103,7 @@ def add_schema():
                 attribute = request.form["attribute"]
                 cardinality = request.form["cardinality"]
                 sf.insert_attribute(attribute, cardinality)
+                data_handler.save_data(sf.get_schema(), sf.get_facts())
                 flash("Attribute successfully added.")
             except Exception as e:
                 flash(str(e))
@@ -137,6 +129,7 @@ def update_attribute():
             attribute = request.form["attribute"]
             cardinality = request.form["cardinality"]
             sf.update_attribute(attribute, cardinality)
+            data_handler.save_data(sf.get_schema(), sf.get_facts())
             flash("Attribute successfully update.")
         except Exception as e:
             flash(str(e))
@@ -148,6 +141,7 @@ def delete_attribute(attribute):
     if session['user']['role'] == 'admin':
         try:
             sf.delete_attribute(attribute)
+            data_handler.save_data(sf.get_schema(), sf.get_facts())
             flash("Attribute successfully deleted.")
         except Exception as e:
             flash(str(e))
@@ -162,6 +156,7 @@ def delete_fact(entity, attribute, value):
         entity = entity.replace('%2F', '/')
         try:
             sf.delete_fact(entity, attribute, value)
+            data_handler.save_data(sf.get_schema(), sf.get_facts())
             deletion = {
                 "action": "deletion",
                 "entity": entity,
@@ -169,8 +164,8 @@ def delete_fact(entity, attribute, value):
                 "value": value,
                 "datetime": datetime.now().strftime("%y/%m/%d %H:%M:%S")
             }
-            flash("Fact successfully deleted")
             history_handler.register_modification(deletion)
+            flash("Fact successfully deleted")
         except Exception as e:
             flash(str(e))
     else:
@@ -190,15 +185,15 @@ def detail_entity(entity):
 
 
 if __name__ == "__main__":
-    xml_dump_file = "dump.xml"
-    xml_user_file = "users.xml"
-    xml_history_file = "history.xml"
+    xml_dump_file = "data/dump.xml"
+    xml_user_file = "data/users.xml"
+    xml_history_file = "data/history.xml"
 
-    data_handler = DataHandler("dump.xml")
+    data_handler = DataHandler("data/dump.xml")
     schema, facts = data_handler.restore_data()
 
-    user_handler = UserHandler("users.xml")
-    history_handler = HistoryHandler("schema.xml")
+    user_handler = UserHandler("data/users.xml")
+    history_handler = HistoryHandler("data/history.xml")
 
     sf = SchemaFacts(schema, facts)
 

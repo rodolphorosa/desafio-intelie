@@ -48,7 +48,7 @@ class SchemaFacts:
     def get_attribute(self, attribute):
         return self.__retrieve_attribute_by_name(self.__schema, attribute)
 
-    def retrieve_current_facts(self):
+    def get_current_facts(self):
         deleted_facts = self.__retrieve_deleted_facts(self.__facts)
         non_deleted_facts = self.__retrieve_non_deleted_facts(self.__facts)
 
