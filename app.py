@@ -5,6 +5,8 @@ from datetime import datetime
 from schemaFacts import SchemaFacts
 from xmlHandler import DataHandler, HistoryHandler, UserHandler
 
+import os
+
 app = Flask(__name__, template_folder='template')
 
 
