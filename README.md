@@ -12,6 +12,10 @@ Nesse caso, deve-se executar os seguintes comandos no Linux (no diretório do pr
     $ pip install -r requirements.txt
     $ python app.py
 
+Para testar apenas a funcionalidade destinada à resolução do problema de encontrar fatos vigentes, 
+é necessário unicamente executar o módulo _schemaFacts.py_ utilizando o comando ```python schemaFacts.py``` na linha do comando do Windows/Linux. 
+
+
 Ao abrir a página web da solução, será necessário realizar log in. 
 Há dois usuários registrados: user e visitor, ambos com senha password. 
 O primeiro tem como role “admin”, enquanto o segundo, “visitor”. 

@@ -5,4 +5,16 @@
     <value>gabriel</value>
     <date_time>20/03/01 22:20:03</date_time>
   </modification>
+  <modification action="deletion">
+    <entity>entity/2</entity>
+    <attribute>name</attribute>
+    <value>joão</value>
+    <date_time>20/03/02 10:08:52</date_time>
+  </modification>
+  <modification action="insertion">
+    <entity>entity/1</entity>
+    <attribute>sex</attribute>
+    <value>male</value>
+    <date_time>20/03/02 10:09:23</date_time>
+  </modification>
 </modifications>

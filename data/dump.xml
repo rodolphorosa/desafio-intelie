@@ -9,6 +9,9 @@
     <attribute name="phone">
       <cardinality>many</cardinality>
     </attribute>
+    <attribute name="sex">
+      <cardinality>one</cardinality>
+    </attribute>
   </schema>
   <facts>
     <fact current="yes">
@@ -70,6 +73,16 @@
       <entity>entity/1</entity>
       <attribute>name</attribute>
       <value>gabriel</value>
+    </fact>
+    <fact current="no">
+      <entity>entity/2</entity>
+      <attribute>name</attribute>
+      <value>joão</value>
+    </fact>
+    <fact current="yes">
+      <entity>entity/1</entity>
+      <attribute>sex</attribute>
+      <value>male</value>
     </fact>
   </facts>
 </data>
