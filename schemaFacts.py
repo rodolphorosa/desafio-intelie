@@ -97,14 +97,7 @@ class SchemaFacts:
             self.__drop_facts_by_attribute(self.__facts, attribute)
 
     def delete_fact(self, entity, attribute, value):
-        if attribute not in [s[0] for s in self.__schema]:
-            raise Exception("Attribute \'{0}\' not in schema".format(attribute))
-        elif entity not in set([f[0] for f in self.__facts]):
-            raise Exception("Entity \'{0}\' not found".format(entity))
-        elif (entity, attribute, value) not in set([(f[0], f[1], f[2]) for f in self.__facts]):
-            raise Exception("Fact \'({0}, {1}, {2})\' does not exist".format(entity, attribute, value))
-        else:
-            self.__facts.append((entity, attribute, value, False))
+        self.__facts.append((entity, attribute, value, False))
 
 
 if __name__ == '__main__':

@@ -66,5 +66,10 @@
       <attribute>address</attribute>
       <value>rua bob, 88</value>
     </fact>
+    <fact current="no">
+      <entity>entity/1</entity>
+      <attribute>name</attribute>
+      <value>gabriel</value>
+    </fact>
   </facts>
 </data>

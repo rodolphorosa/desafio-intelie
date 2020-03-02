@@ -1,0 +1,8 @@
+<modifications>
+  <modification action="deletion">
+    <entity>entity/1</entity>
+    <attribute>name</attribute>
+    <value>gabriel</value>
+    <date_time>20/03/01 22:20:03</date_time>
+  </modification>
+</modifications>
